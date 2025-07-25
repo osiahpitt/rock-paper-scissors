@@ -48,6 +48,22 @@ function playRound(humanChoice, computerChoice) {
         humanScore++;
 }
 }
+
+const rockBtn = document.getElementById('rockBtn');
+const paperBtn = document.getElementById('paperBtn');
+const scissorsBtn = document.getElementById('scissorsBtn');
+
+// an anonymous function is an unnamed function used for specific tasks that don't
+// need to be repeated and are often assigned to variables or used as arguments for other functions
+// a handler (playRound) is a function that executes in response to an event
+// a function reference is the act of treating a function itself as a value, without
+// immediately executing it 
+// the argument is what gets passed to the function
+rockBtn.addEventListener('click', () => playRound('rock'));
+paperBtn.addEventListener('click', () => playRound('paper'));
+scissorsBtn.addEventListener('click', () => playRound('scissors'));
+
+
 // loops through 5 times; passes answers to playRound(); logs and alerts score and messages
 // function playGame() {
     // for (let i = 0; i < 5; i++) {
@@ -67,12 +83,6 @@ function playRound(humanChoice, computerChoice) {
         // alert(`TIE - YOU'RE BOTH MEDIOCRITIES\n ${humanScore} - ${computerScore}`)
     // }
 // }
-
-const rpsButtons = document.querySelector('btn');
-
-rpsButtons.forEach(button => {
-    button.addEventListener('click', playRound);
-})
 
 // playGame()
 
