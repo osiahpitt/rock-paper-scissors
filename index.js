@@ -27,27 +27,29 @@ let computerScore = 0;
 function playRound(humanChoice, computerChoice) {
 
     if (humanChoice === computerChoice) {
-        console.log('TIE');
+        resultsDiv.textContent = 'TIE';
     } else if (humanChoice === 'rock' && computerChoice === 'paper' ) {
-        console.log('COMPUTER WINS: paper beats rock')
+        resultsDiv.textContent = 'COMPUTER WINS: paper beats rock';
         computerScore++;
     } else if (humanChoice === 'paper' && computerChoice === 'rock') {
-        console.log('HUMAN WINS: paper beats rock');
+        resultsDiv.textContent = 'HUMAN WINS: paper beats rock';
         humanScore++;
     } else if (humanChoice === 'scissors' && computerChoice === 'rock') {
-        console.log('COMPUTER WINS: rock beats scissors');
+        resultsDiv.textContent = 'COMPUTER WINS: rock beats scissors';
         computerScore++;
     } else if (humanChoice === 'rock' && computerChoice === 'scissors') {
-        console.log('HUMAN WINS: rock beats scissors');
+        resultsDiv.textContent = 'HUMAN WINS: rock beats scissors';
         humanScore++;
     } else if (humanChoice === 'paper' && computerChoice === 'scissors') {
-        console.log('COMPUTER WINS: scissors beats paper');
+        resultsDiv.textContent = 'COMPUTER WINS: scissors beats paper';
         computerScore++;
     } else if (humanChoice === 'scissors' && computerChoice === 'paper') {
-        console.log('HUMAN WINS: scissors beats paper');
+        resultsDiv.textContent = 'HUMAN WINS: scissors beats paper';
         humanScore++;
 }
 }
+const resultsDiv = document.querySelector('.displayResults')
+
 
 const rockBtn = document.getElementById('rockBtn');
 const paperBtn = document.getElementById('paperBtn');
