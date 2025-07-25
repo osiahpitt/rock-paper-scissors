@@ -49,26 +49,32 @@ function playRound(humanChoice, computerChoice) {
 }
 }
 // loops through 5 times; passes answers to playRound(); logs and alerts score and messages
-function playGame() {
-    for (let i = 0; i < 5; i++) {
+// function playGame() {
+    // for (let i = 0; i < 5; i++) {
 
-        let humanChoice = getHumanChoice();
-        humanChoice = humanChoice.toLowerCase();
-        let computerChoice = getComputerChoice();
-        playRound(humanChoice, computerChoice);
-        console.log(`Human: ${humanScore} - Computer: ${computerScore}`)
-    }
+        // let humanChoice = getHumanChoice();
+        // humanChoice = humanChoice.toLowerCase();
+        // let computerChoice = getComputerChoice();
+        // playRound(humanChoice, computerChoice);
+        // console.log(`Human: ${humanScore} - Computer: ${computerScore}`)
+    // }
 
-    if (humanScore > computerScore) {
-        alert(`HUMAN WINS, AGI IS NEVER COMING\n ${humanScore} - ${computerScore}`);
-    } else if (humanScore < computerScore) {
-        alert(`COMPUTER WINS, GIVE UP NOW\n ${computerScore} - ${humanScore}`); 
-    } else {
-        alert(`TIE - YOU'RE BOTH MEDIOCRITIES\n ${humanScore} - ${computerScore}`)
-    }
-}
+    // if (humanScore > computerScore) {
+        // alert(`HUMAN WINS, AGI IS NEVER COMING\n ${humanScore} - ${computerScore}`);
+    // } else if (humanScore < computerScore) {
+        // alert(`COMPUTER WINS, GIVE UP NOW\n ${computerScore} - ${humanScore}`); 
+    // } else {
+        // alert(`TIE - YOU'RE BOTH MEDIOCRITIES\n ${humanScore} - ${computerScore}`)
+    // }
+// }
 
-playGame()
+const rpsButtons = document.querySelector('btn');
+
+rpsButtons.forEach(button => {
+    button.addEventListener('click', playRound);
+})
+
+// playGame()
 
 // this program isn't nearly as complicated as it may look as a beginner.
 // OdinProject makes the directions more complex than they need to be.
