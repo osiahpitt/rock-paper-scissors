@@ -24,7 +24,8 @@ function getHumanChoice() {
 let humanScore = 0;
 let computerScore = 0;
 // evaluates input and logs results; also updates score
-function playRound(humanChoice, computerChoice) {
+function playRound(humanChoice) {
+    const computerChoice = getComputerChoice();
 
     if (humanChoice === computerChoice) {
         resultsDiv.textContent = 'TIE';
@@ -46,10 +47,27 @@ function playRound(humanChoice, computerChoice) {
     } else if (humanChoice === 'scissors' && computerChoice === 'paper') {
         resultsDiv.textContent = 'HUMAN WINS: scissors beats paper';
         humanScore++;
-}
-}
-const resultsDiv = document.querySelector('.displayResults')
+    }
 
+    scoreDiv.textContent = `Human: ${humanScore} - Computer: ${computerScore}`;
+    
+    if (humanScore === 5 || computerScore === 5) {
+        if (humanScore > computerScore) {
+            resultsDiv.textContent = `HUMAN WINS, AGI IS NEVER COMING\n ${humanScore} - ${computerScore}`;
+        } else if (humanScore < computerScore) {
+            resultsDiv.textContent = `COMPUTER WINS, GIVE UP NOW\n ${computerScore} - ${humanScore}`; 
+        } else {
+        resultsDiv.textContent = `TIE - YOU'RE BOTH MEDIOCRITIES\n ${humanScore} - ${computerScore}`;
+        }
+
+        rockBtn.disabled = true;
+        paperBtn.disabled = true;
+        scissorsBtn.disabled = true;
+    }
+}
+
+const resultsDiv = document.querySelector('.displayResults')
+const scoreDiv = document.querySelector('.displayScore');
 
 const rockBtn = document.getElementById('rockBtn');
 const paperBtn = document.getElementById('paperBtn');
@@ -64,29 +82,6 @@ const scissorsBtn = document.getElementById('scissorsBtn');
 rockBtn.addEventListener('click', () => playRound('rock'));
 paperBtn.addEventListener('click', () => playRound('paper'));
 scissorsBtn.addEventListener('click', () => playRound('scissors'));
-
-const scoreDiv = document.querySelector('.displayScore');
-// loops through 5 times; passes answers to playRound(); logs and alerts score and messages
-function playGame() {
-    for (let i = 0; i < 5; i++) {
-
-        let humanChoice = getHumanChoice();
-        humanChoice = humanChoice.toLowerCase();
-        let computerChoice = getComputerChoice();
-        playRound(humanChoice, computerChoice);
-        scoreDiv.textContent = `Human: ${humanScore} - Computer: ${computerScore}`
-    }
-
-    if (humanScore > computerScore) {
-        resultsDiv.textContent = `HUMAN WINS, AGI IS NEVER COMING\n ${humanScore} - ${computerScore}`;
-    } else if (humanScore < computerScore) {
-        resultsDiv.textContent = `COMPUTER WINS, GIVE UP NOW\n ${computerScore} - ${humanScore}`; 
-    } else {
-        resultsDiv.textContent = `TIE - YOU'RE BOTH MEDIOCRITIES\n ${humanScore} - ${computerScore}`
-    }
-}
-
-playGame()
 
 // this program isn't nearly as complicated as it may look as a beginner.
 // OdinProject makes the directions more complex than they need to be.
